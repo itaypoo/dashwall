@@ -1,0 +1,21 @@
+.mp-star-rating > img {
+    width: 22px;
+    height: 22px;
+    transition: scale 100ms ease-in-out;
+    user-select: none;
+    -webkit-user-drag: none;
+    /* Color: #696969, Generated using: https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(40%) sepia(0%) saturate(1716%) hue-rotate(197deg) brightness(100%) contrast(89%);
+}
+
+.mp-star-rating > img[data-golden="true"] {
+    /* Color: #ffa111, Generated using: https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(64%) sepia(100%) saturate(1059%) hue-rotate(346deg) brightness(98%) contrast(106%);
+}
+
+.mp-star-rating > img.editable {
+    cursor: pointer;
+}
+.mp-star-rating > img.editable:hover {
+    scale: 1.2;
+}

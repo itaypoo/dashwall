@@ -1,0 +1,67 @@
+
+.mp-bottom-app-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 12px 16px 12px 8px;
+    z-index: 1000;
+    background-color: var(--color-card);
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.mp-bottom-app-bar .mpbap-icons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.mp-bottom-app-bar .mpbap-icons > .mp-icon-button {
+    height: 48px !important;
+    width: 48px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mp-bottom-app-bar .mpbap-icons > .mp-icon-button .mp-icon {
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mp-bottom-app-bar .mpbap-fab {
+    height: 56px;
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: var(--color-primary-light);
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.mp-bottom-app-bar .mpbap-fab * {
+    color: var(--color-on-primary-light);
+}
+
+.mp-bottom-app-bar .mpbap-fab:hover {
+    box-shadow: 0 4px 8px 0 var(--color-hover-background);
+    transform: translateY(-2px);
+}
+.mp-bottom-app-bar .mpbap-fab:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.mp-page-with-bottomappbar-content {
+    margin-bottom: 80px;
+}

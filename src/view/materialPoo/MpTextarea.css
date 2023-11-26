@@ -1,0 +1,79 @@
+.mp-textarea > textarea {
+    border: none;
+    padding: 16px;
+    border-radius: 24px;
+    outline: 1px solid var(--color-outline);
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-size: var(--text-size-body);
+    width: 100%;
+    box-sizing: border-box;
+    height: 200px;
+}
+.mp-textarea:focus-within > textarea {
+    outline: 2px solid var(--color-primary);
+}
+.mp-textarea > textarea::placeholder {
+    opacity: 0;
+}
+
+.mp-textarea {
+    position: relative;
+    display: inline-block;
+    width: unset;
+}
+
+.mp-textarea textarea::-webkit-scrollbar {
+    background: transparent;
+}
+
+.mp-card[data-type="filled"] .mp-textarea > textarea {
+    background-color: var(--color-card);
+}
+.mp-card[data-type="filled"] .mp-textarea > label {
+    background-color: var(--color-card);
+}
+.mp-card[data-type="primary"] .mp-textarea > textarea {
+    background-color: var(--color-primary);
+}
+.mp-card[data-type="primary"] .mp-textarea > label {
+    background-color: var(--color-primary);
+}
+
+.mp-dialog .mp-textarea > textarea {
+    background-color: var(--color-card);
+}
+.mp-dialog .mp-textarea > label {
+    background-color: var(--color-card) !important;
+}
+
+.mp-textarea > label {
+    transition: 100ms ease-in-out;
+    position: absolute;
+    inset-inline-start: 10px;
+    background-color: var(--color-background);
+    color: var(--color-outline);
+    padding: 0 6px 0 6px;
+    height: 20px;
+    top: 16px;
+    user-select: none;
+    border-radius: 100px;
+    pointer-events: none;
+}
+
+.mp-textarea:focus-within > label,
+.mp-textarea:has(textarea:not(:placeholder-shown)) > label {
+    position: absolute;
+    inset-inline-start: 10px;
+    background-color: var(--color-background);
+    font-size: var(--text-size-fineprint);
+    color: var(--color-primary);
+    padding: 0 8px 0 8px;
+    height: fit-content;
+    top: -8px;
+}
+
+/* .mp-textarea:has(textarea:not(:placeholder-shown)):not(:focus-within) FORBIDDEN CSS MAGIC (WTF?) */
+.mp-textarea:has(textarea:not(:placeholder-shown)):not(:focus-within) > label {
+    color: var(--color-outline);
+}

@@ -1,0 +1,72 @@
+.mp-nav-drawer {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background-color: var(--color-card);
+    font-size: var(--text-size-body);
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    transition: width 0.3s;
+    position: fixed;
+}
+
+.mp-nav-drawer > .mp-nav-drawer-item {
+    transition: 100ms;
+    border-radius: 100px;
+    height: 56px;
+    padding: 0 24px 0 24px;
+    text-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    flex-shrink: 0;
+    cursor: pointer;
+    color: var(--color-on-card);
+}
+.mp-nav-drawer > .mp-nav-drawer-item:hover {
+    background-color: var(--color-hover-background);;
+}
+
+.mp-nav-drawer > .mp-nav-drawer-item.selected {
+    background-color: var(--color-primary-light);
+    font-weight: bold;
+    color: var(--color-on-primary-light);
+    animation: select 0.3s ease-in-out;
+}
+
+.mp-nav-drawer > .mp-nav-drawer-item > .mp-icon {
+    color: var(--color-on-card);
+}
+.mp-nav-drawer > .mp-nav-drawer-item.selected > .mp-icon {
+    color: var(--color-on-primary-light);
+}
+
+.mp-page-with-navbar-content {
+    margin-inline-start: 360px;
+}
+
+.mp-nav-drawer-title {
+    padding: 24px;
+    padding-top: 24px;
+    padding-bottom: 12px;
+    font-weight: bold;
+}
+
+@keyframes select {
+    0% {
+        background-color: var(--color-hover-background);;
+        color: var(--color-on-card);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        background-color: var(--color-primary-light);
+        color: var(--color-on-primary-light);
+    }
+}

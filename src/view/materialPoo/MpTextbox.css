@@ -1,0 +1,75 @@
+.mp-textbox > input {
+    border: none;
+    height: 56px;
+    padding: 0 16px 0 16px;
+    border-radius: 100px;
+    outline: 1px solid var(--color-outline);
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-size: var(--text-size-body);
+    width: 100%;
+    box-sizing: border-box;
+}
+.mp-textbox:focus-within > input {
+    outline: 2px solid var(--color-primary);
+}
+.mp-textbox > input::placeholder {
+    opacity: 0;
+}
+
+.mp-textbox {
+    position: relative;
+    display: inline-block;
+    width: unset;
+}
+
+.mp-card[data-type="filled"] .mp-textbox > input {
+    background-color: var(--color-card);
+}
+.mp-card[data-type="filled"] .mp-textbox > label {
+    background-color: var(--color-card);
+}
+.mp-card[data-type="primary"] .mp-textbox > input {
+    background-color: var(--color-primary);
+}
+.mp-card[data-type="primary"] .mp-textbox > label {
+    background-color: var(--color-primary);
+}
+
+.mp-dialog .mp-textbox > input {
+    background-color: var(--color-card);
+}
+.mp-dialog .mp-textbox > label {
+    background-color: var(--color-card) !important;
+}
+
+.mp-textbox > label {
+    transition: 100ms ease-in-out;
+    position: absolute;
+    inset-inline-start: 10px;
+    background-color: var(--color-background);
+    color: var(--color-outline);
+    padding: 0 6px 0 6px;
+    height: 20px;
+    top: calc(50% - 9px);
+    user-select: none;
+    border-radius: 100px;
+    pointer-events: none;
+}
+
+.mp-textbox:focus-within > label,
+.mp-textbox:has(input:not(:placeholder-shown)) > label {
+    position: absolute;
+    inset-inline-start: 10px;
+    background-color: var(--color-background);
+    font-size: var(--text-size-fineprint);
+    color: var(--color-primary);
+    padding: 0 8px 0 8px;
+    height: fit-content;
+    top: -8px;
+}
+
+/* .mp-textbox:has(input:not(:placeholder-shown)):not(:focus-within) FORBIDDEN CSS MAGIC (WTF?) */
+.mp-textbox:has(input:not(:placeholder-shown)):not(:focus-within) > label {
+    color: var(--color-outline);
+}

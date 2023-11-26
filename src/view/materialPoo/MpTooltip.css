@@ -1,0 +1,55 @@
+.mp-tooltip {
+    position: relative;
+}
+
+.mp-tooltip > .mp-tooltip-text {
+    opacity: 0.8;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 200px;
+    width: fit-content;
+    text-align: center;
+    background-color: var(--color-on-background);
+    color: var(--color-background);
+    padding: 8px;
+    border-radius: 8px;
+    animation: tooltip-fade-out 0.2s ease-in-out;
+}
+
+.mp-tooltip:hover > .mp-tooltip-text {
+    display: block;
+    animation: tooltip-fade-in 1s ease-out;
+}
+
+@keyframes tooltip-fade-in {
+    0% {
+        top: 90%;
+        opacity: 0;
+        display: none;
+    }
+    85% {
+        top: 90%;
+        opacity: 0;
+        display: none;
+    }
+    100% {
+        top: calc(100% + 10px);
+        opacity: 0.8;
+        display: block;
+    }
+}
+
+@keyframes tooltip-fade-out {
+    from {
+        opacity: 0.8;
+        display: block;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}

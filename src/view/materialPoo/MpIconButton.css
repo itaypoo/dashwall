@@ -1,0 +1,55 @@
+.mp-icon-button {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 100ms ease-in-out;
+}
+
+.mp-icon-button:active {
+    opacity: 0.6;
+}
+
+.mp-icon-button[data-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.mp-icon-button > .mp-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.mp-icon-button[data-type="primary"] {
+    background-color: var(--color-primary);
+}
+.mp-icon-button[data-type="primary"]:hover {
+    opacity: 0.85;
+}
+.mp-icon-button[data-type="primary"] > .mp-icon {
+    color: var(--color-on-primary);
+}
+
+.mp-icon-button[data-type="outlined"] {
+    background-color: transparent;
+    outline: 1px solid var(--color-outline);
+}
+.mp-icon-button[data-type="outlined"]:hover {
+    background-color: var(--color-hover-background);;
+}
+.mp-icon-button[data-type="outlined"] > .mp-icon {
+    color: var(--color-on-background);
+}
+
+.mp-icon-button[data-type="text"] {
+    background-color: transparent;
+}
+.mp-icon-button[data-type="text"]:hover {
+    background-color: var(--color-hover-background);;
+}
+.mp-icon-button[data-type="text"] > .mp-icon {
+    color: var(--color-on-background);
+}

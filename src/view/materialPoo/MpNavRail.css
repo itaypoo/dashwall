@@ -1,0 +1,109 @@
+.mp-nav-rail {
+    width: 90px;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background-color: var(--color-card);
+}
+
+.mp-nav-rail > .mp-nav-rail-item {
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.mp-nav-rail-item:first-child {
+    margin-top: 24px;
+}
+
+.mp-nav-rail-item > span.label {
+    font-size: 13px;
+    transition: 100ms ease-in-out;
+}
+
+.mp-nav-rail-item > .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 36px;
+    margin: 0 10px 4px 10px;
+    border-radius: 100px;
+    transition: 100ms ease-in-out;
+}
+
+.mp-nav-rail-separator {
+    margin-bottom: 56px;
+}
+
+.mp-nav-rail-item > .icon-wrapper > span {
+    font-size: 28px;
+}
+
+.mp-nav-rail-item:hover > .icon-wrapper {
+    background-color: var(--color-hover-background);;
+}
+
+.mp-nav-rail-item[data-selected="true"] > .icon-wrapper {
+    background-color: var(--color-primary-light);
+    animation: selected 300ms ease-in-out;
+}
+
+
+.mp-nav-rail-item[data-selected="true"] > span.label {
+    color: var(--color-on-primary-light);
+    font-weight: bold;
+}
+
+.mp-nav-rail-item[data-selected="true"] > .icon-wrapper > span {
+    color: var(--color-on-primary-light);
+}
+
+@keyframes selected {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.mp-nav-rail-fab {
+    height: 56px;
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: var(--color-primary-light);
+    margin-top: 17px;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
+}
+
+.mp-nav-rail-fab * {
+    color: var(--color-on-primary-light);
+}
+
+.mp-nav-rail-fab:hover {
+    box-shadow: 0 4px 8px 0 var(--color-hover-background);;
+    transform: translateY(-2px);
+}
+.mp-nav-rail-fab:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.mp-page-with-navrail-content {
+    margin-inline-start: 90px;
+}

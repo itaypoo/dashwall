@@ -1,0 +1,56 @@
+.mp-button {
+    font-size: var(--text-size-body);
+    height: 40px;
+    width: fit-content;
+    padding: 0 24px 0 24px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 100ms,
+    font-size 0ms,
+    padding 0ms,
+    height 0ms;
+}
+.mp-button:hover {
+    opacity: 0.85;
+}
+.mp-button:active {
+    opacity: 1;
+}
+
+
+.mp-button[data-huge=true] {
+    font-size: var(--text-size-subtitle);
+    height: 70px;
+    padding: 0 48px 0 48px;
+}
+
+
+.mp-button[data-type="filled"] {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.mp-button[data-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.mp-button[data-type="outlined"] {
+    background-color: transparent;
+    color: var(--color-primary);
+    outline: 1px solid var(--color-outline);
+}
+.mp-button[data-type="outlined"]:hover {
+    background-color: var(--color-hover-background);
+}
+
+
+.mp-button[data-type="text"] {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+.mp-button[data-type="text"]:hover {
+    background-color: var(--color-hover-background);
+}

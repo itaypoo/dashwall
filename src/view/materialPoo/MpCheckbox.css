@@ -1,0 +1,54 @@
+.mp-checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 60px;
+    display: block;
+    cursor: pointer;
+    outline: 2px solid var(--color-outline);
+    background-color: var(--color-card);
+    position: relative;
+}
+
+.mp-checkbox > .mp-checkbox-thumb {
+    width: 0;
+    height: 0;
+    border-radius: 60px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-outline);
+    transition: all 0.2s ease;
+}
+.mp-checkbox:active > .mp-checkbox-thumb {
+    width: 8px;
+    height: 8px;
+}
+.mp-checkbox:active[data-checked="true"] > .mp-checkbox-thumb {
+    width: 36px;
+    height: 30px;
+}
+
+.mp-checkbox > .mp-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--color-on-primary);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+.mp-checkbox[data-checked="true"] > .mp-icon {
+    opacity: 1;
+}
+
+.mp-checkbox[data-checked="true"] > .mp-checkbox-thumb {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-primary);
+}

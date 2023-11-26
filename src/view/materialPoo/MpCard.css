@@ -1,0 +1,47 @@
+.mp-card {
+    width: fit-content;
+    padding: var(--padding-card);
+    border-radius: var(--corner-card);
+    box-sizing: border-box;
+}
+.mp-card[data-header=true] {
+    padding: var(--padding-header-card);
+    border-radius: var(--corner-header-card);
+}
+
+.mp-card[data-type="filled"] {
+    background-color: var(--color-card);
+    color: var(--color-on-card);
+}
+.mp-card[data-type="filled"] .mp-button[data-type="text"] {
+    background-color: var(--color-card);
+    color: var(--color-primary);
+}
+
+.mp-card[data-type="primary"] {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+.mp-card[data-type="primary"] .mp-text {
+    color: var(--color-on-primary);
+}
+.mp-card[data-type="primary"] .mp-button[data-type="filled"] {
+    background-color: var(--color-on-primary);
+    color: var(--color-primary);
+}
+.mp-card[data-type="primary"] .mp-button[data-type="outlined"] {
+    color: var(--color-on-primary);
+}
+.mp-card[data-type="primary"] .mp-button[data-type="text"] {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.mp-card[data-type="outlined"] {
+    background-color: transparent;
+    outline: 1px solid var(--color-outline);
+}
+.mp-card[data-type="outlined"] .mp-button[data-type="text"] {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+}

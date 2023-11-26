@@ -1,0 +1,36 @@
+.mp-icon {
+    user-select: none;
+}
+
+.mp-button:has(>.mp-icon) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-inline-start: 16px;
+    padding-inline-end: 24px;
+    gap: 8px;
+}
+
+.mp-button[data-huge="true"] > .mp-icon {
+    font-size: var(--text-size-subtitle);
+}
+
+.mp-button[data-type="filled"] > .mp-icon {
+    color: var(--color-on-primary);
+}
+.mp-button[data-type="outlined"] > .mp-icon {
+    color: var(--color-primary);
+}
+.mp-button[data-type="text"] > .mp-icon {
+    color: var(--color-primary);
+}
+
+.mp-card[data-type="primary"] .mp-button[data-type="filled"] > .mp-icon {
+    color: var(--color-primary);
+}
+.mp-card[data-type="primary"] .mp-button[data-type="outlined"] > .mp-icon {
+    color: var(--color-on-primary);
+}
+.mp-card[data-type="primary"] .mp-button[data-type="text"] > .mp-icon {
+    color: var(--color-on-primary);
+}

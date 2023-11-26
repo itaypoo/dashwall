@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    /* Font */
+    --font-family: 'Roboto', sans-serif;
+
+    /* Text Sizes */
+    --text-size-fineprint: 12px;
+    --text-size-body: 16px;
+    --text-size-subtitle: 28px;
+    --text-size-title: 57px;
+    --text-size-heading: 112px;
+
+    /* Padding */
+    --padding-card: 24px;
+    --padding-header-card: 56px;
+
+    /* Corner Radius */
+    --corner-card: 24px;
+    --corner-header-card: 56px;
+
+    --max-w: 1000px
+}
+
+/*
+----  Globals  ---------------------
+ */
+
+body {
+    background-color: var(--color-background);
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+::selection {
+    background: var(--color-primary-light);
+    color: var(--color-on-primary-light);
+}
+
+* {
+    font-family: var(--font-family);
+    color: var(--color-on-background);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    background: var(--color-background);
+}
+*::-webkit-scrollbar-thumb {
+    background: var(--color-hover-background);
+    border-radius: 10px;
+}
+
+/*
+----  Markdown  ---------------------
+ */
+
+.markdown * {
+    all: revert !important;
+    font-weight: normal !important;
+    overflow-wrap: anywhere;
+}
+
+.markdown p {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+}
+
+.markdown pre,
+.markdown p:has(code) {
+    background-color: var(--color-dark-background) !important;
+    font-size: 15px !important;
+    color: white !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    direction: ltr !important;
+    width: 100% !important;
+    max-width: fit-content !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+}
+
+/*
+----  Fade in animations  ---------------------
+ */
+
+[data-fade*="f"] {
+    animation: fadeInAnimation ease 0.5s;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    translate: 0 0;
+    opacity: 0;
+}
+
+[data-fade="f1"] {
+    animation-delay: 0s;
+}
+[data-fade="f2"] {
+    animation-delay: 0.1s;
+}
+[data-fade="f3"] {
+    animation-delay: 0.2s;
+}
+[data-fade="f4"] {
+    animation-delay: 0.3s;
+}
+[data-fade="f5"] {
+    animation-delay: 0.4s;
+}
+[data-fade="f6"] {
+    animation-delay: 0.5s;
+}
+[data-fade="f7"] {
+    animation-delay: 0.6s;
+}
+[data-fade="f8"] {
+    animation-delay: 0.7s;
+}
+[data-fade="f9"] {
+    animation-delay: 0.8s;
+}
+[data-fade="f10"] {
+    animation-delay: 0.9s;
+}
+[data-fade="f11"] {
+    animation-delay: 1.0s;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        translate: 0 20px;
+    }
+    100% {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+
+/* Medium screens */
+@media (min-width: 600px) and (max-width: 840px) {
+
+}
+/* Compact screens */
+@media (max-width: 600px) {
+    :root {
+        /* Padding */
+        --padding-card: 24px;
+        --padding-header-card: 32px;
+
+        /* Corner Radius */
+        --corner-card: 24px;
+        --corner-header-card: 32px;
+    }
+}

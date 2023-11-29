@@ -9,6 +9,7 @@ type Props = {
     gridWidth: number
     gridHeight: number
     insidePanelComponent: React.FC<{ panel: GridPanel }>
+    onPanelLongPress?: (panel: GridPanel) => void
 }
 
 export default function GridPanelManager(props: Props) {
@@ -28,9 +29,10 @@ export default function GridPanelManager(props: Props) {
         isResizeInvalid,
         resizedPanel,
 
+        heldPanel,
         showGhostPanel,
         ghostPanel,
-    } = useGridPanelManager()
+    } = useGridPanelManager(props.onPanelLongPress)
 
     return (
         <div
@@ -56,6 +58,7 @@ export default function GridPanelManager(props: Props) {
                         key={`panel${panel.uid}`}
                         className={styles.panel}
                         data-editing={draggedPanel?.uid == panel.uid || resizedPanel?.uid == panel.uid}
+                        data-held={heldPanel?.uid == panel.uid}
                         data-invalid={
                             ((draggedPanel?.uid == panel.uid) && isDragInvalid) ||
                             ((resizedPanel?.uid == panel.uid) && isResizeInvalid)
@@ -69,7 +72,10 @@ export default function GridPanelManager(props: Props) {
                             top: (panel.yPos * cellSize) + cellMargin,
                         }}
                     >
-                        <props.insidePanelComponent panel={panel}/>
+                        <props.insidePanelComponent
+                            panel={panel}
+
+                        />
                     </div>
                     { isEditMode &&
                         <div

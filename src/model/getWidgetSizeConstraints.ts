@@ -7,8 +7,8 @@ type SizeConstraints = {
 export function getWidgetSizeConstraints(widgetId: WidgetId): SizeConstraints {
     switch (widgetId) {
         case "clock": return {
-            minWidth: 4, minHeight: 3,
-            maxWidth: 10, maxHeight: 10,
+            minWidth: 3, minHeight: 3,
+            maxWidth: 6, maxHeight: 6,
         }
         case "weather": return {
             minWidth: 4, minHeight: 4,

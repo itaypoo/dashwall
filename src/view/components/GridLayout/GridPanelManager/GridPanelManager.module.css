@@ -29,9 +29,17 @@
     outline: 4px solid var(--color-error);
 }
 
+.panel[data-held="true"] {
+    animation-name: panel-long-press;
+    animation-fill-mode: forwards;
+    animation-duration: 200ms;
+    animation-delay: 200ms;
+}
+
 .panelResizeTip {
     position: absolute;
     transition: 100ms;
+    cursor: nw-resize;
 }
 
 .ghostPanel {
@@ -52,5 +60,14 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes panel-long-press {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: scale(1.02);
     }
 }

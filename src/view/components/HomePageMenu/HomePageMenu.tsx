@@ -7,7 +7,7 @@ import {useContext} from "react";
 import {GridContext} from "@/view/components/GridLayout/gridContext";
 import MpButton from "@/view/materialPoo/MpButton";
 import MpDialog from "@/view/materialPoo/MpDialog";
-import AddWidgetDialog from "@/view/pages/HomePage/HomePageMenu/AddWidgetDialog/AddWidgetDialog";
+import AddWidgetDialog from "./AddWidgetDialog/AddWidgetDialog";
 import ConfirmActionDialog from "@/view/components/ConfirmActionDialog/ConfirmActionDialog";
 
 const menuOptions: {id: string, icon: string, text: string}[] = [

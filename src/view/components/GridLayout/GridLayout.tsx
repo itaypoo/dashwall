@@ -8,6 +8,7 @@ import {GridPanel} from "@/model/GridPanel";
 
 type Props = {
     insidePanelComponent: React.FC<{ panel: GridPanel }>
+    onPanelLongPress?: (panel: GridPanel) => void
 }
 
 export default function GridLayout(props: Props) {
@@ -27,6 +28,7 @@ export default function GridLayout(props: Props) {
                 gridWidth={columns}
                 gridHeight={rows}
                 insidePanelComponent={props.insidePanelComponent}
+                onPanelLongPress={props.onPanelLongPress}
             />
         </div>
     )

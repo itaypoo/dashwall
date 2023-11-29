@@ -1,0 +1,52 @@
+.main {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-on-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main p {
+    color: var(--color-background);
+    margin: 0;
+}
+
+.main > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.main > p:last-child {
+    margin-top: 8px;
+}
+
+p.time {
+    --distance: 20px;
+    font-size: 3.5rem;
+    font-family: 'Rubik', sans-serif;
+    line-height: 45px;
+    transition: 1000ms;
+}
+
+p.time.one {
+    transform:
+            translateX( calc(var(--distance) * -1) )
+            translateY( calc(var(--distance) * -1) );
+}
+p.time.two {
+    transform:
+            translateX( calc(var(--distance) * 1) )
+            translateY( calc(var(--distance) * -1) );
+}
+p.time.three {
+    transform:
+            translateX( calc(var(--distance) * -1) )
+            translateY( calc(var(--distance) * 1) );
+}
+p.time.four {
+    transform:
+            translateX( calc(var(--distance) * 1) )
+            translateY( calc(var(--distance) * 1) );
+}

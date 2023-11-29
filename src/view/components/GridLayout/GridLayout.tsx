@@ -1,8 +1,7 @@
 import {useGridLayout} from "./useGridLayout"
 import styles from "./GridLayout.module.css"
-import {GridContext, useGridContext} from "@/view/components/GridLayout/gridContext";
 import GridDots from "@/view/components/GridLayout/GridDots/GridDots";
-import React, {ReactElement, ReactNode, useRef} from "react";
+import React, { useRef} from "react";
 import GridPanelManager from "@/view/components/GridLayout/GridPanelManager/GridPanelManager";
 import {GridPanel} from "@/model/GridPanel";
 

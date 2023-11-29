@@ -5,7 +5,6 @@ import {GridPanel} from "@/model/GridPanel";
 export const useGridPanelManager = (onLongPress?: (panel: GridPanel) => void) => {
     const {
         cellSize,
-        cellMargin,
         isEditMode,
         replacePanel,
         panels,

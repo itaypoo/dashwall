@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import { useRef} from "react";
 import styles from "@/view/index.module.css";
 import GridLayout from "@/view/components/GridLayout/GridLayout";
 import WidgetWrapper from "@/view/components/WidgetWrapper/WidgetWrapper";

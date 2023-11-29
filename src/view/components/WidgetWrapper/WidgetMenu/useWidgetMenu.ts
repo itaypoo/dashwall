@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 
 export const useWidgetMenu = (isOpen: boolean, onClose: () => void) => {
 

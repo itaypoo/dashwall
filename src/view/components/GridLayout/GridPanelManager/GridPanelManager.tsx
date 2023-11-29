@@ -1,8 +1,7 @@
 import {useGridPanelManager} from "./useGridPanelManager"
 import styles from "./GridPanelManager.module.css"
-import React, {Fragment, useContext, useEffect} from "react";
+import React, {Fragment, useContext} from "react";
 import {GridContext} from "@/view/components/GridLayout/gridContext";
-import {generateUUID} from "@/model/generateUUID";
 import {GridPanel} from "@/model/GridPanel";
 
 type Props = {
@@ -15,7 +14,6 @@ type Props = {
 export default function GridPanelManager(props: Props) {
     const {
         panels,
-        addPanel,
         cellSize,
         cellMargin,
         isEditMode
@@ -52,7 +50,7 @@ export default function GridPanelManager(props: Props) {
                     }}
                 />
             }
-            { panels.map((panel, i) => (
+            { panels.map((panel) => (
                 <Fragment key={`fragment${panel.uid}`}>
                     <div
                         key={`panel${panel.uid}`}

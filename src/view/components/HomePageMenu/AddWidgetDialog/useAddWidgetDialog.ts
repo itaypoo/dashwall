@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from "react";
+import {useContext} from "react";
 import {GridContext} from "@/view/components/GridLayout/gridContext";
 import {generateUUID} from "@/model/generateUUID";
 import {getWidgetDefaultOptions} from "@/model/getWidgetDefaultOptions";

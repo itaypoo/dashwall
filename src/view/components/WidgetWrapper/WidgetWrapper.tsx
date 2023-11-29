@@ -3,7 +3,6 @@ import {ClockWidget, ClockWidgetOptions} from "@/view/widgets/ClockWidget/ClockW
 import {WeatherWidget, WeatherWidgetOptions} from "@/view/widgets/WeatherWidget/WeatherWidget";
 import {TextWidget, TextWidgetOptions} from "@/view/widgets/TextWidget/TextWidget";
 import WidgetMenu from "@/view/components/WidgetWrapper/WidgetMenu/WidgetMenu";
-import {useEffect} from "react";
 
 type Props = {
     widgetId: WidgetId

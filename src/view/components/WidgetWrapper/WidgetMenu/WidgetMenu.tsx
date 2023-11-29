@@ -1,8 +1,5 @@
 import {useWidgetMenu} from "./useWidgetMenu"
 import styles from "./WidgetMenu.module.css"
-import {useEffect} from "react";
-import MpIconButton from "@/view/materialPoo/MpIconButton";
-import MpButton from "@/view/materialPoo/MpButton";
 import MpIcon from "@/view/materialPoo/MpIcon";
 import MpText from "@/view/materialPoo/MpText";
 

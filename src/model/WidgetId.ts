@@ -1,5 +1,5 @@
 
-type WidgetId =
+export type WidgetId =
     "clock" |
     "weather" |
     "text"

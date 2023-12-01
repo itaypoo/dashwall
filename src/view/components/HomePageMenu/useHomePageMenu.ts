@@ -1,6 +1,5 @@
 import {useState, useEffect, useContext} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
-import {generateUUID} from "@/model/generateUUID";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 
 export const useHomePageMenu = () => {
     const [menuButtonShown, setMenuButtonShown] = useState(true)

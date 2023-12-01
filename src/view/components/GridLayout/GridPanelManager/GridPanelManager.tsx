@@ -1,20 +1,19 @@
 import {useGridPanelManager} from "./useGridPanelManager"
 import styles from "./GridPanelManager.module.css"
-import React, {Fragment, useContext, useEffect} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
-import {generateUUID} from "@/model/generateUUID";
+import React, {Fragment, ReactNode, useContext, useState} from "react";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 import {GridPanel} from "@/model/GridPanel";
 
 type Props = {
     gridWidth: number
     gridHeight: number
-    insidePanelComponent: React.FC<{ panel: GridPanel }>
+    renderPanelContent: (panel: GridPanel) => ReactNode
+    onPanelLongPress?: (panel: GridPanel) => void
 }
 
 export default function GridPanelManager(props: Props) {
     const {
         panels,
-        addPanel,
         cellSize,
         cellMargin,
         isEditMode
@@ -28,9 +27,10 @@ export default function GridPanelManager(props: Props) {
         isResizeInvalid,
         resizedPanel,
 
+        heldPanel,
         showGhostPanel,
         ghostPanel,
-    } = useGridPanelManager()
+    } = useGridPanelManager(props.onPanelLongPress)
 
     return (
         <div
@@ -50,12 +50,13 @@ export default function GridPanelManager(props: Props) {
                     }}
                 />
             }
-            { panels.map((panel, i) => (
+            { panels.map((panel) => (
                 <Fragment key={`fragment${panel.uid}`}>
                     <div
                         key={`panel${panel.uid}`}
                         className={styles.panel}
                         data-editing={draggedPanel?.uid == panel.uid || resizedPanel?.uid == panel.uid}
+                        data-held={heldPanel?.uid == panel.uid}
                         data-invalid={
                             ((draggedPanel?.uid == panel.uid) && isDragInvalid) ||
                             ((resizedPanel?.uid == panel.uid) && isResizeInvalid)
@@ -69,7 +70,7 @@ export default function GridPanelManager(props: Props) {
                             top: (panel.yPos * cellSize) + cellMargin,
                         }}
                     >
-                        <props.insidePanelComponent panel={panel}/>
+                        {props.renderPanelContent(panel)}
                     </div>
                     { isEditMode &&
                         <div

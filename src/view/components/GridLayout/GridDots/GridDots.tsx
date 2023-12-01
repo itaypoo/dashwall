@@ -1,6 +1,6 @@
 import styles from "./GridDots.module.css"
 import {useContext} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 
 type Props = {
     gridWidth: number

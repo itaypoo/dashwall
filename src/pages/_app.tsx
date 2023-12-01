@@ -20,9 +20,11 @@ import '@/view/materialPoo/MpFab.css'
 import '@/view/materialPoo/MpTooltip.css'
 import '@/view/materialPoo/MpProgressBar.css'
 import '@/view/materialPoo/MpDivider.css'
+import '@/view/materialPoo/MpSelect.css'
+import '@/view/materialPoo/MpColorSelect.css'
 
 import type { AppProps } from 'next/app'
-import {GridContext, useGridContext} from "@/view/components/GridLayout/gridContext";
+import {GridContext, useGridContext} from "@/view/components/GridLayout/GridContext";
 import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {

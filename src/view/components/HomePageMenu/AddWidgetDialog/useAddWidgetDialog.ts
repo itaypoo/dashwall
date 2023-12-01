@@ -1,8 +1,9 @@
-import {useState, useEffect, useContext} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
+import {useContext} from "react";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 import {generateUUID} from "@/model/generateUUID";
 import {getWidgetDefaultOptions} from "@/model/getWidgetDefaultOptions";
 import {getWidgetSizeConstraints} from "@/model/getWidgetSizeConstraints";
+import {WidgetId} from "@/model/WidgetId";
 
 export const useAddWidgetDialog = () => {
     const {

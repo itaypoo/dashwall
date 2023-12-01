@@ -1,3 +1,4 @@
+import {WidgetId} from "@/model/WidgetId";
 
 type SizeConstraints = {
     minWidth: number, minHeight: number,
@@ -7,8 +8,8 @@ type SizeConstraints = {
 export function getWidgetSizeConstraints(widgetId: WidgetId): SizeConstraints {
     switch (widgetId) {
         case "clock": return {
-            minWidth: 4, minHeight: 3,
-            maxWidth: 10, maxHeight: 10,
+            minWidth: 3, minHeight: 3,
+            maxWidth: 6, maxHeight: 6,
         }
         case "weather": return {
             minWidth: 4, minHeight: 4,
@@ -16,7 +17,7 @@ export function getWidgetSizeConstraints(widgetId: WidgetId): SizeConstraints {
         }
         case "text": return {
             minWidth: 2, minHeight: 2,
-            maxWidth: 10, maxHeight: 10,
+            maxWidth: 30, maxHeight: 30,
         }
         default: return {
             minWidth: 2, minHeight: 2,

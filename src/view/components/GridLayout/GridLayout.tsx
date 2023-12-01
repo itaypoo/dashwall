@@ -1,13 +1,13 @@
 import {useGridLayout} from "./useGridLayout"
 import styles from "./GridLayout.module.css"
-import {GridContext, useGridContext} from "@/view/components/GridLayout/gridContext";
 import GridDots from "@/view/components/GridLayout/GridDots/GridDots";
-import React, {ReactElement, ReactNode, useRef} from "react";
+import React, {ReactNode, useRef} from "react";
 import GridPanelManager from "@/view/components/GridLayout/GridPanelManager/GridPanelManager";
 import {GridPanel} from "@/model/GridPanel";
 
 type Props = {
-    insidePanelComponent: React.FC<{ panel: GridPanel }>
+    renderPanelContent: (panel: GridPanel) => ReactNode
+    onPanelLongPress?: (panel: GridPanel) => void
 }
 
 export default function GridLayout(props: Props) {
@@ -26,7 +26,8 @@ export default function GridLayout(props: Props) {
             <GridPanelManager
                 gridWidth={columns}
                 gridHeight={rows}
-                insidePanelComponent={props.insidePanelComponent}
+                renderPanelContent={props.renderPanelContent}
+                onPanelLongPress={props.onPanelLongPress}
             />
         </div>
     )

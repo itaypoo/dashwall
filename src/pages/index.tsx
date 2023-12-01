@@ -1,5 +1,5 @@
-import HomePage from "@/view/pages/HomePage/HomePage";
+import AppPage from "@/view/pages/AppPage/AppPage";
 
 export default function index() {
-  return <HomePage/>
+    return <AppPage/>
 }

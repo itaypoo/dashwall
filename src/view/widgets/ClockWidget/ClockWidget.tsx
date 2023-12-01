@@ -1,10 +1,11 @@
 import {useClockWidget} from "./useClockWidget"
 import styles from "./ClockWidget.module.css"
 import {WidgetComponent} from "@/model/WidgetComponent";
-import {CSSProperties} from "react";
+import {CSSProperties, useEffect} from "react";
 
 export type ClockWidgetOptions = {
     is24Hour: boolean
+    theme: "light" | "dark" | "auto"
 }
 
 export const ClockWidget: WidgetComponent<ClockWidgetOptions> = (props) => {
@@ -12,11 +13,12 @@ export const ClockWidget: WidgetComponent<ClockWidgetOptions> = (props) => {
         hours,
         minutes,
         dateString,
-        numberDistances
+        numberDistances,
+        isDark,
     } = useClockWidget(props.options)
 
     return (
-        <div className={styles.main}>
+        <div className={styles.main} data-dark={isDark}>
             <div>
                 <p className={styles.time+" "+styles.one}
                    style={{"--distance": numberDistances[0]+"px"} as CSSProperties}

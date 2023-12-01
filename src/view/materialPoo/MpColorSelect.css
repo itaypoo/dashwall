@@ -1,0 +1,12 @@
+input.mp-color-select {
+    width: 56px;
+    height: 48px;
+    background-color: transparent;
+    border-radius: 100px;
+    padding: 4px;
+    border: 2px solid var(--color-outline);
+}
+input.mp-color-select::-webkit-color-swatch {
+    border-radius: 100px;
+    border: none;
+}

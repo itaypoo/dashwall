@@ -1,13 +1,13 @@
 import {useGridPanelManager} from "./useGridPanelManager"
 import styles from "./GridPanelManager.module.css"
-import React, {Fragment, useContext} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
+import React, {Fragment, ReactNode, useContext, useState} from "react";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 import {GridPanel} from "@/model/GridPanel";
 
 type Props = {
     gridWidth: number
     gridHeight: number
-    insidePanelComponent: React.FC<{ panel: GridPanel }>
+    renderPanelContent: (panel: GridPanel) => ReactNode
     onPanelLongPress?: (panel: GridPanel) => void
 }
 
@@ -70,10 +70,7 @@ export default function GridPanelManager(props: Props) {
                             top: (panel.yPos * cellSize) + cellMargin,
                         }}
                     >
-                        <props.insidePanelComponent
-                            panel={panel}
-
-                        />
+                        {props.renderPanelContent(panel)}
                     </div>
                     { isEditMode &&
                         <div

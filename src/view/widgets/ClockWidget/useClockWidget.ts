@@ -3,10 +3,17 @@ import {ClockWidgetOptions} from "@/view/widgets/ClockWidget/ClockWidget";
 
 export const useClockWidget = (options: ClockWidgetOptions) => {
     const [date, setDate] = useState(new Date())
+    const [isDark, setIsDark] = useState(false)
     const [numberDistances, setNumberDistances] = useState([0, 0, 0, 0]);
     const lastMinuteRef = useRef<number>(date.getMinutes())
 
     useEffect(() => {
+        const arr = [0, 0, 0, 0]
+        for (let i = 0; i < 4; i++) {
+            arr[i] = Math.floor(Math.random() * 6)
+        }
+        setNumberDistances(arr)
+
         const timer = setInterval(() => setDate(new Date()), 1000)
         return () => clearInterval(timer)
     }, [])
@@ -20,6 +27,10 @@ export const useClockWidget = (options: ClockWidgetOptions) => {
             }
             setNumberDistances(arr)
         }
+        if(options.theme == "auto") {
+            setIsDark((date.getHours() >= 22 || date.getHours() < 6))
+        }
+        else setIsDark(options.theme == "dark")
     }, [date])
 
     const getHours = () => {
@@ -48,10 +59,16 @@ export const useClockWidget = (options: ClockWidgetOptions) => {
         return date.toLocaleDateString("en-US", {weekday: "short", month: "long", day: "numeric"})
     }
 
+    const getAMPM = () => {
+        return date.getHours() < 12 ? "AM" : "PM"
+    }
+
     return {
         hours: getHours(),
         minutes: getMinutes(),
+        ampm: getAMPM(),
         dateString: getDateString(),
-        numberDistances
+        numberDistances,
+        isDark,
     }
 }

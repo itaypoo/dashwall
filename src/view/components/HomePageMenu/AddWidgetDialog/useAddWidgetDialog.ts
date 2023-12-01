@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 import {generateUUID} from "@/model/generateUUID";
 import {getWidgetDefaultOptions} from "@/model/getWidgetDefaultOptions";
 import {getWidgetSizeConstraints} from "@/model/getWidgetSizeConstraints";

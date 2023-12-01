@@ -4,6 +4,7 @@ import MpDialog from "@/view/materialPoo/MpDialog";
 import MpButton from "@/view/materialPoo/MpButton";
 import MpIcon from "@/view/materialPoo/MpIcon";
 import MpText from "@/view/materialPoo/MpText";
+import {WidgetId} from "@/model/WidgetId";
 
 const widgetOptions: {widgetId: WidgetId, name: string, icon: string}[] = [
     {

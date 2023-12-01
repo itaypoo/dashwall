@@ -24,7 +24,6 @@
     padding: 8px 0;
     transition: 200ms ease-in-out;
     transform-origin: top left;
-
 }
 .menu[data-shown="false"] {
     transform: scale(0);

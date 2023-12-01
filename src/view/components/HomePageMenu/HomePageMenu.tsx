@@ -4,7 +4,7 @@ import MpIconButton from "@/view/materialPoo/MpIconButton";
 import MpIcon from "@/view/materialPoo/MpIcon";
 import MpText from "@/view/materialPoo/MpText";
 import {useContext} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 import MpButton from "@/view/materialPoo/MpButton";
 import AddWidgetDialog from "./AddWidgetDialog/AddWidgetDialog";
 import ConfirmActionDialog from "@/view/components/ConfirmActionDialog/ConfirmActionDialog";

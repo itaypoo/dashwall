@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react"
-import {GridContext} from "@/view/components/GridLayout/gridContext"
+import {GridContext} from "@/view/components/GridLayout/GridContext"
 import {GridPanel} from "@/model/GridPanel";
 
 export const useGridPanelManager = (onLongPress?: (panel: GridPanel) => void) => {

@@ -3,9 +3,11 @@ import {ClockWidget, ClockWidgetOptions} from "@/view/widgets/ClockWidget/ClockW
 import {WeatherWidget, WeatherWidgetOptions} from "@/view/widgets/WeatherWidget/WeatherWidget";
 import {TextWidget, TextWidgetOptions} from "@/view/widgets/TextWidget/TextWidget";
 import WidgetMenu from "@/view/components/WidgetWrapper/WidgetMenu/WidgetMenu";
+import {WidgetId} from "@/model/WidgetId";
 
 type Props = {
     widgetId: WidgetId
+    panelUid: string
     options: any
     isMenuOpen: boolean
     onCloseMenu: () => void
@@ -27,6 +29,7 @@ export default function WidgetWrapper(props: Props) {
             <WidgetMenu
                 isOpen={props.isMenuOpen}
                 onClose={props.onCloseMenu}
+                panelUid={props.panelUid}
             />
         </div>
     )

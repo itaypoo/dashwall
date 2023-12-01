@@ -14,7 +14,7 @@ type GridContextData = {
 
     panels: GridPanel[]
     addPanel: (panel: GridPanel) => void
-    removePanel: (panel: GridPanel) => void
+    removePanel: (uid: string) => void
     replacePanel: (oldPanel: GridPanel, newPanel: GridPanel) => void
     clearPanels: () => void
 }
@@ -34,8 +34,9 @@ export const useGridContext: () => GridContextData = () => {
     const addPanel = (panel: GridPanel) => {
         setPanels([...panels, panel])
     }
-    const removePanel = (panel: GridPanel) => {
-        setPanels(panels.filter(p => p !== panel))
+    const removePanel = (uid: string) => {
+        if(panels.length == 1) savePanelsToStorage([])
+        setPanels(panels.filter(p => p.uid !== uid))
     }
     const replacePanel = (oldPanel: GridPanel, newPanel: GridPanel) => {
         const i = panels.indexOf(oldPanel)
@@ -45,10 +46,13 @@ export const useGridContext: () => GridContextData = () => {
     }
     const clearPanels = () => {
         setPanels([])
+        savePanelsToStorage([])
     }
 
+    const savePanelsToStorage = (p: GridPanel[]) => localStorage.setItem('panels', JSON.stringify(p))
+
     useEffect(() => {
-        if(panels.length != 0) localStorage.setItem('panels', JSON.stringify(panels))
+        if(panels.length != 0) savePanelsToStorage(panels)
     }, [panels])
 
     useEffect(() => {

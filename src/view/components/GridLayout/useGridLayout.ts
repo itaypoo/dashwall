@@ -1,5 +1,5 @@
 import {useState, useEffect, RefObject, useContext} from "react";
-import {GridContext} from "@/view/components/GridLayout/gridContext";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 
 export const useGridLayout = (wrapperRef: RefObject<HTMLDivElement>) => {
     const {

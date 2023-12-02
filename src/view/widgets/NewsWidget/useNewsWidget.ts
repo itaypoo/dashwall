@@ -1,11 +1,16 @@
-import {useState, useEffect, useRef, RefObject} from "react";
+import {useState, useEffect, useRef, RefObject, useContext} from "react";
 import {NewsArticle} from "@/model/NewsArticle";
 import {NewsWidgetOptions} from "@/view/widgets/NewsWidget/NewsWidget";
+import {GridPanel} from "@/model/GridPanel";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 
-export const useNewsWidget = (options: NewsWidgetOptions, articleListRef: RefObject<HTMLDivElement>) => {
+export const useNewsWidget = (options: NewsWidgetOptions, articleListRef: RefObject<HTMLDivElement>, panel: GridPanel) => {
     const [articles, setArticles] = useState<NewsArticle[]>([])
-    const [pushListDown, setPushListDown] = useState(true)
-    const millisPerArticle = 800
+    const [listPushHeight, setListPushHeight] = useState(0)
+
+    const {
+        cellSize
+    } = useContext(GridContext)
 
     useEffect(() => {
         fetchNews()
@@ -15,17 +20,42 @@ export const useNewsWidget = (options: NewsWidgetOptions, articleListRef: RefObj
     }, [])
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setPushListDown(!pushListDown)
-        }, articles.length * millisPerArticle)
-        return () => clearTimeout(timer)
-    }, [articles, pushListDown])
+        if(!articleListRef.current) return
+        let height = 0
+        let direction = -1
+
+        const onFrame = () => {
+            setListPushHeight(height)
+            height += direction
+
+            if(height > 0) direction = -1
+            let maxHeight = articleListRef.current!.scrollHeight
+            maxHeight -= panel.height * cellSize
+            maxHeight += 14
+            if(height < -maxHeight) {
+                direction = 1
+            }
+
+            console.log("height", height)
+            console.log("maxHeight", maxHeight)
+
+            requestAnimationFrame(onFrame)
+        }
+
+        const anim = requestAnimationFrame(onFrame)
+        return () => cancelAnimationFrame(anim)
+    }, [panel, articleListRef.current])
 
     const fetchNews = async () => {
         const res = await fetch(`/api/news?countryCode=${options.countryCode}`)
         if(res.ok) {
             const data = await res.json()
-            setArticles(data.articles)
+            setArticles([
+                data.articles[0],
+                data.articles[1],
+                data.articles[2],
+                data.articles[3],
+            ])
             const length = data.articles.length * 800
         }
         else console.error(res)
@@ -39,7 +69,6 @@ export const useNewsWidget = (options: NewsWidgetOptions, articleListRef: RefObj
     return {
         articles,
         getArticleDateString,
-        pushListDown,
-        millisPerArticle,
+        listPushHeight,
     }
 }

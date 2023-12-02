@@ -14,32 +14,22 @@ export const NewsWidget: WidgetComponent<NewsWidgetOptions> = (props) => {
     const {
         articles,
         getArticleDateString,
-        pushListDown,
-        millisPerArticle,
-    } = useNewsWidget(props.options, articleListRef)
+        listPushHeight
+    } = useNewsWidget(props.options, articleListRef, props.panel)
 
     const {
         cellSize,
         cellMargin,
     } = useContext(GridContext)
 
-    const listStyle: any = {
-        transform: `translateY(0)`,
-    }
-    if(pushListDown && articleListRef.current && articles.length > 0) {
-        let height = articleListRef.current.clientHeight
-        height -= props.panel.height * cellSize
-        height += 14
-        listStyle.transform = `translateY(-${height}px)`
-    }
-    listStyle.transition = `transform ${articles.length * millisPerArticle}ms linear`
-
     return (
         <div className={styles.bg}>
             <div
                 className={styles.articleList}
                 ref={articleListRef}
-                style={listStyle}
+                style={{
+                    top: listPushHeight
+                }}
             >
                 { articles.map((article, i) => (
                     <div className={styles.articleCard}>

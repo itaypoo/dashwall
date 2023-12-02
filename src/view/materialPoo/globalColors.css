@@ -17,85 +17,14 @@
     --color-hover-background: rgba(0, 0, 0, 0.2);
 }
 
+/* User Color */
 
-/* Alternate Color Schemes */
-
-[data-color="velvet"] {
-    --color-primary: #AE2038;
-    --color-on-primary: #FFFFFF;
-    --color-primary-light: #ffa1af;
-    --color-on-primary-light: #570715;
-    --color-card: #f8e1e9;
-    --color-on-card: #482525;
-    --color-background: #fdf3f7;
-    --color-on-background: #330309;
-    --color-outline: #5d4b4b;
-    --color-error: #e51919;
-    --color-on-error: #FFFFFF;
-    --color-dark-background: #100608;
-    --color-on-dark-background: #f3f3f3;
-}
-
-[data-color="lime"] {
-    --color-primary: #4cdc89;
-    --color-on-primary: #FFFFFF;
-    --color-primary-light: #a5fabd;
-    --color-on-primary-light: #155e30;
-    --color-card: #cdf6d4;
-    --color-on-card: ;
-    --color-background: #EDFFF1;
-    --color-on-background: #052d17;
-    --color-outline: #587a66;
-    --color-error: #d5134d;
-    --color-on-error: #FFFFFF;
-    --color-dark-background: #0b110e;
-    --color-on-dark-background: #f3f3f3;
-}
-
-[data-color="orange"] {
-    --color-primary: #FF6251;
-    --color-on-primary: #FFFFFF;
-    --color-primary-light: #FF9A8C;
-    --color-on-primary-light: #461812;
-    --color-card: #FFBFB5;
-    --color-on-card: #421711;
-    --color-background: #FFEAE7;
-    --color-on-background: #1f0a07;
-    --color-outline: #8d756b;
-    --color-error: #e5003d;
-    --color-on-error: #FFFFFF;
-    --color-dark-background: #100a08;
-    --color-on-dark-background: #f3f3f3;
-}
-
-[data-color="purple"] {
-    --color-primary: #B877E2;
-    --color-on-primary: #FFFFFF;
-    --color-primary-light: #e9c8ff;
-    --color-on-primary-light: #37104f;
-    --color-card: #F2DBFF;
-    --color-on-card: #3e2b52;
-    --color-background: #F9EFFF;
-    --color-on-background: #330F4A;
-    --color-outline: #7a688d;
-    --color-error: #cb0b4e;
-    --color-on-error: #FFFFFF;
-    --color-dark-background: #110c15;
-    --color-on-dark-background: #f3f3f3;
-}
-
-[data-color="darkblue"] {
-    --color-primary: #176DCF;
-    --color-on-primary: #ffffff;
-    --color-primary-light: #03274d;
-    --color-on-primary-light: #c7e3fd;
-    --color-card: #142131;
-    --color-on-card: #dbe9ff;
-    --color-background: #10171c;
-    --color-on-background: #f7fcff;
-    --color-outline: #77818a;
-    --color-error: #c2153a;
-    --color-on-error: #ffffff;
-    --color-dark-background: #202a3a;
-    --color-on-dark-background: #e0ebef;
+body {
+    --user-color-darkest: #2b1408;
+    --user-color-darker: #57270f;
+    --user-color-dark: #823b17;
+    --user-color-normal: #d96226;
+    --user-color-light: #e8a17d;
+    --user-color-lighter: #f0c0a8;
+    --user-color-lightest: #f7e0d4;
 }

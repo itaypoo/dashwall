@@ -4,32 +4,43 @@ import {WeatherWidget, WeatherWidgetOptions} from "@/view/widgets/WeatherWidget/
 import {TextWidget, TextWidgetOptions} from "@/view/widgets/TextWidget/TextWidget";
 import WidgetMenu from "@/view/components/WidgetWrapper/WidgetMenu/WidgetMenu";
 import {WidgetId} from "@/model/WidgetId";
+import {GridPanel} from "@/model/GridPanel";
 
 type Props = {
-    widgetId: WidgetId
-    panelUid: string
-    options: any
+    panel: GridPanel
     isMenuOpen: boolean
     onCloseMenu: () => void
 }
 
 export default function WidgetWrapper(props: Props) {
 
+    const widgetId = props.panel.data.widgetId as WidgetId
+    const options = props.panel.data.options
+
     return (
         <div className={styles.widgetWrapper}>
-            { props.widgetId === "clock" &&
-                <ClockWidget options={props.options as ClockWidgetOptions}/>
+            { widgetId === "clock" &&
+                <ClockWidget
+                    options={options as ClockWidgetOptions}
+                    panel={props.panel}
+                />
             }
-            { props.widgetId === "weather" &&
-                <WeatherWidget options={props.options as WeatherWidgetOptions}/>
+            { widgetId === "weather" &&
+                <WeatherWidget
+                    options={options as WeatherWidgetOptions}
+                    panel={props.panel}
+                />
             }
-            { props.widgetId === "text" &&
-                <TextWidget options={props.options as TextWidgetOptions}/>
+            { widgetId === "text" &&
+                <TextWidget
+                    options={options as TextWidgetOptions}
+                    panel={props.panel}
+                />
             }
             <WidgetMenu
                 isOpen={props.isMenuOpen}
                 onClose={props.onCloseMenu}
-                panelUid={props.panelUid}
+                panelUid={props.panel.uid}
             />
         </div>
     )

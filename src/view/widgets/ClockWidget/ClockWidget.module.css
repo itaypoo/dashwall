@@ -57,3 +57,11 @@ p.time.four {
             translateX( calc(var(--distance) * 1) )
             translateY( calc(var(--distance) * 1) );
 }
+
+.main[data-big="true"] p.time {
+    font-size: 5rem;
+    line-height: 65px;
+}
+.main[data-big="true"] > p:last-child {
+    margin-top: 14px;
+}

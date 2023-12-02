@@ -25,9 +25,7 @@ export default function AppPage() {
                 <GridLayout
                     renderPanelContent={(panel) => (
                         <WidgetWrapper
-                            widgetId={panel.data.widgetId}
-                            panelUid={panel.uid}
-                            options={panel.data.options}
+                            panel={panel}
                             isMenuOpen={menuOpenForPanel === panel.uid}
                             onCloseMenu={() => setMenuOpenForPanel(null)}
                         />

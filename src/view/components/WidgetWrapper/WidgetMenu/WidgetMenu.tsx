@@ -5,6 +5,7 @@ import MpText from "@/view/materialPoo/MpText";
 import ConfirmActionDialog from "@/view/components/ConfirmActionDialog/ConfirmActionDialog";
 import {useContext, useRef} from "react";
 import {AppPageContext} from "@/view/pages/AppPage/AppPageContext";
+import {GridContext} from "@/view/components/GridLayout/GridContext";
 
 type Props = {
     isOpen: boolean
@@ -20,6 +21,9 @@ export default function WidgetMenu(props: Props) {
         setDeleteWidgetDialogOpenFor,
         setWidgetOptionsDialogOpenFor,
     } = useContext(AppPageContext)
+    const {
+        setIsEditMode
+    } = useContext(GridContext)
 
     return (
         <>
@@ -41,6 +45,16 @@ export default function WidgetMenu(props: Props) {
                     >
                         <MpIcon icon="settings"/>
                         <MpText scale="body" noMargin>Settings</MpText>
+                    </div>
+                    <div
+                        className={styles.menuOption}
+                        onClick={() => {
+                            setIsEditMode(true)
+                            props.onClose()
+                        }}
+                    >
+                        <MpIcon icon="pan_tool"/>
+                        <MpText scale="body" noMargin>Move</MpText>
                     </div>
                     <div
                         className={styles.menuOption}

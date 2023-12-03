@@ -2,8 +2,8 @@ import {useNewsWidget} from "./useNewsWidget"
 import styles from "./NewsWidget.module.css"
 import {WidgetComponent} from "@/model/WidgetComponent";
 import {NewsCountryCode} from "@/model/NewsCountryCode";
-import {useContext, useEffect, useRef, useState} from "react";
-import {GridContext} from "@/view/components/GridLayout/GridContext";
+import {useRef} from "react";
+import Marquee from "react-fast-marquee";
 
 export type NewsWidgetOptions = {
     countryCode: NewsCountryCode
@@ -14,13 +14,11 @@ export const NewsWidget: WidgetComponent<NewsWidgetOptions> = (props) => {
     const {
         articles,
         getArticleDateString,
-        listPushHeight
-    } = useNewsWidget(props.options, articleListRef, props.panel)
-
-    const {
-        cellSize,
-        cellMargin,
-    } = useContext(GridContext)
+        articleWidth,
+        articleHeight,
+        articleListTop,
+        isSmall,
+    } = useNewsWidget(props.options, props.panel, articleListRef)
 
     return (
         <div className={styles.bg}>
@@ -28,13 +26,26 @@ export const NewsWidget: WidgetComponent<NewsWidgetOptions> = (props) => {
                 className={styles.articleList}
                 ref={articleListRef}
                 style={{
-                    top: listPushHeight
+                    top: -articleListTop,
                 }}
             >
                 { articles.map((article, i) => (
-                    <div className={styles.articleCard}>
+                    <div
+                        className={styles.articleCard}
+                        style={{
+                            width: articleWidth,
+                            height: articleHeight,
+                        }}
+                    >
                         <p className={styles.sourceText}>{article.source}</p>
-                        <p className={styles.titleText}>{article.title}</p>
+                        { !isSmall &&
+                            <p className={styles.titleText}>{article.title}</p>
+                        }
+                        { isSmall &&
+                            <Marquee speed={50} style={{zIndex: "1 !important"}}>
+                                <p className={styles.titleText}>{article.title + " -- | -- "}</p>
+                            </Marquee>
+                        }
                         <p className={styles.dateText}>{getArticleDateString(article)}</p>
                     </div>
                 ))}

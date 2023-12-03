@@ -4,12 +4,21 @@ import {NewsWidgetOptions} from "@/view/widgets/NewsWidget/NewsWidget";
 import {GridPanel} from "@/model/GridPanel";
 import {GridContext} from "@/view/components/GridLayout/GridContext";
 
-export const useNewsWidget = (options: NewsWidgetOptions, articleListRef: RefObject<HTMLDivElement>, panel: GridPanel) => {
+export const useNewsWidget = (
+    options: NewsWidgetOptions,
+    panel: GridPanel,
+    articleListRef: RefObject<HTMLDivElement>
+) => {
     const [articles, setArticles] = useState<NewsArticle[]>([])
-    const [listPushHeight, setListPushHeight] = useState(0)
+    const [articleWidth, setArticleWidth] = useState(0)
+    const [articleHeight, setArticleHeight] = useState(0)
+    const [articleListTop, setArticleListTop] = useState(0)
+
+    const isSmall = panel.height < 4
 
     const {
-        cellSize
+        cellSize,
+        cellMargin,
     } = useContext(GridContext)
 
     useEffect(() => {
@@ -20,43 +29,31 @@ export const useNewsWidget = (options: NewsWidgetOptions, articleListRef: RefObj
     }, [])
 
     useEffect(() => {
-        if(!articleListRef.current) return
-        let height = 0
-        let direction = -1
+        setArticleWidth((panel.width * cellSize) - (cellMargin * 2) - 28 - 28)
+        setArticleHeight((panel.height * cellSize) - (cellMargin * 2) - 28 - 28)
+    }, [panel])
 
-        const onFrame = () => {
-            setListPushHeight(height)
-            height += direction
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            const scroll = articleHeight + 28 + 8
+            setArticleListTop(articleListTop + scroll)
 
-            if(height > 0) direction = -1
-            let maxHeight = articleListRef.current!.scrollHeight
-            maxHeight -= panel.height * cellSize
-            maxHeight += 14
-            if(height < -maxHeight) {
-                direction = 1
+            if(articleListTop == ((articles.length-1) * scroll)) {
+                setArticleListTop(0)
             }
+        }, isSmall ? 12000 : 8000)
+        return () => clearTimeout(timeout)
+    }, [articleListRef.current, articleListTop, articleHeight, articles])
 
-            console.log("height", height)
-            console.log("maxHeight", maxHeight)
-
-            requestAnimationFrame(onFrame)
-        }
-
-        const anim = requestAnimationFrame(onFrame)
-        return () => cancelAnimationFrame(anim)
-    }, [panel, articleListRef.current])
+    useEffect(() => {
+        setArticleListTop(0)
+    }, [panel.height])
 
     const fetchNews = async () => {
         const res = await fetch(`/api/news?countryCode=${options.countryCode}`)
         if(res.ok) {
             const data = await res.json()
-            setArticles([
-                data.articles[0],
-                data.articles[1],
-                data.articles[2],
-                data.articles[3],
-            ])
-            const length = data.articles.length * 800
+            setArticles(data.articles)
         }
         else console.error(res)
     }
@@ -69,6 +66,9 @@ export const useNewsWidget = (options: NewsWidgetOptions, articleListRef: RefObj
     return {
         articles,
         getArticleDateString,
-        listPushHeight,
+        articleWidth,
+        articleHeight,
+        articleListTop,
+        isSmall,
     }
 }

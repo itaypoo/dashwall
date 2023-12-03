@@ -1,7 +1,7 @@
 
 
 export const setUserColor = (baseHue: number) => {
-    const darkest = hslToHex(baseHue, 100, 10)
+    const darkest = hslToHex(baseHue, 100, 5)
     const darker = hslToHex(baseHue, 100, 20)
     const dark = hslToHex(baseHue, 100, 30)
     const normal = hslToHex(baseHue, 100, 50)

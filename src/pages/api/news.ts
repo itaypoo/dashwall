@@ -74,6 +74,7 @@ async function uploadSavedNews(countryCode: NewsCountryCode, news: NewsArticle[]
     const articlesRef = savedNewsRef.collection("articles")
     const batch2 = db.batch()
     news.forEach((article: any) => {
+        if(article.title == "[Removed]" || article.source == "[Removed]") return
         const articleRef = articlesRef.doc()
         batch2.set(articleRef, article)
     })

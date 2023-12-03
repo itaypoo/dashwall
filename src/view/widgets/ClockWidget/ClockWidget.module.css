@@ -1,7 +1,7 @@
 .main {
     width: 100%;
     height: 100%;
-    background-color: var(--color-on-card);
+    background-color: var(--user-color-lightest);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,15 +9,15 @@
 }
 
 .main p {
-    color: var(--color-card);
+    color: var(--user-color-darkest);
     margin: 0;
 }
 
 .main[data-dark="true"] {
-    background-color: var(--color-card);
+    background-color: var(--user-color-darkest);
 }
 .main[data-dark="true"] p {
-    color: var(--color-on-card);
+    color: var(--user-color-lightest);
 }
 
 .main > div {
@@ -35,6 +35,7 @@ p.time {
     font-family: 'Rubik', sans-serif;
     line-height: 45px;
     transition: 1000ms;
+    color: var(--user-color-normal) !important;
 }
 
 p.time.one {
@@ -56,4 +57,12 @@ p.time.four {
     transform:
             translateX( calc(var(--distance) * 1) )
             translateY( calc(var(--distance) * 1) );
+}
+
+.main[data-big="true"] p.time {
+    font-size: 5rem;
+    line-height: 65px;
+}
+.main[data-big="true"] > p:last-child {
+    margin-top: 14px;
 }

@@ -15,10 +15,15 @@ export const ClockWidget: WidgetComponent<ClockWidgetOptions> = (props) => {
         dateString,
         numberDistances,
         isDark,
-    } = useClockWidget(props.options)
+        isBig,
+    } = useClockWidget(props.options, props.panel)
 
     return (
-        <div className={styles.main} data-dark={isDark}>
+        <div
+            className={styles.main}
+            data-dark={isDark}
+            data-big={isBig}
+        >
             <div>
                 <p className={styles.time+" "+styles.one}
                    style={{"--distance": numberDistances[0]+"px"} as CSSProperties}

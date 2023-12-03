@@ -1,4 +1,3 @@
-import {useAppPage} from "./useAppPage"
 import styles from "./AppPage.module.css"
 import {useContext, useEffect, useRef, useState} from "react";
 import GridLayout from "@/view/components/GridLayout/GridLayout";
@@ -10,10 +9,15 @@ import ConfirmActionDialog from "@/view/components/ConfirmActionDialog/ConfirmAc
 import {GridContext} from "@/view/components/GridLayout/GridContext";
 import WidgetOptionsDialogWrapper from "@/view/pages/AppPage/WidgetOptionsDialogWrapper";
 import {WidgetId} from "@/model/WidgetId";
+import {setUserColor} from "@/view/pages/AppPage/setUserColor";
 
 export default function AppPage() {
     const [menuOpenForPanel, setMenuOpenForPanel] = useState<string | null>(null)
     const contextData = useAppPageContext()
+
+    useEffect(() => {
+        setUserColor(contextData.userColorHue)
+    }, [contextData.userColorHue]);
 
     const {
         removePanel,
@@ -25,9 +29,7 @@ export default function AppPage() {
                 <GridLayout
                     renderPanelContent={(panel) => (
                         <WidgetWrapper
-                            widgetId={panel.data.widgetId}
-                            panelUid={panel.uid}
-                            options={panel.data.options}
+                            panel={panel}
                             isMenuOpen={menuOpenForPanel === panel.uid}
                             onCloseMenu={() => setMenuOpenForPanel(null)}
                         />

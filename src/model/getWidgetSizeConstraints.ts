@@ -19,6 +19,10 @@ export function getWidgetSizeConstraints(widgetId: WidgetId): SizeConstraints {
             minWidth: 2, minHeight: 2,
             maxWidth: 30, maxHeight: 30,
         }
+        case "news": return {
+            minWidth: 4, minHeight: 3,
+            maxWidth: 7, maxHeight: 7,
+        }
         default: return {
             minWidth: 2, minHeight: 2,
             maxHeight: 20, maxWidth: 20,

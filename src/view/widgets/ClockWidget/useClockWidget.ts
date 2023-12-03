@@ -1,9 +1,11 @@
 import {useState, useEffect, useRef} from "react";
 import {ClockWidgetOptions} from "@/view/widgets/ClockWidget/ClockWidget";
+import {GridPanel} from "@/model/GridPanel";
 
-export const useClockWidget = (options: ClockWidgetOptions) => {
+export const useClockWidget = (options: ClockWidgetOptions, panel: GridPanel) => {
     const [date, setDate] = useState(new Date())
     const [isDark, setIsDark] = useState(false)
+    const [isBig, setIsBig] = useState(false)
     const [numberDistances, setNumberDistances] = useState([0, 0, 0, 0]);
     const lastMinuteRef = useRef<number>(date.getMinutes())
 
@@ -17,6 +19,10 @@ export const useClockWidget = (options: ClockWidgetOptions) => {
         const timer = setInterval(() => setDate(new Date()), 1000)
         return () => clearInterval(timer)
     }, [])
+
+    useEffect(() => {
+        setIsBig(panel.width > 4 && panel.height > 4)
+    }, [panel])
 
     useEffect(() => {
         if(lastMinuteRef.current !== date.getMinutes()) {
@@ -70,5 +76,6 @@ export const useClockWidget = (options: ClockWidgetOptions) => {
         dateString: getDateString(),
         numberDistances,
         isDark,
+        isBig,
     }
 }

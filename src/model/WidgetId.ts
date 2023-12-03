@@ -2,4 +2,5 @@
 export type WidgetId =
     "clock" |
     "weather" |
-    "text"
+    "text" |
+    "news"

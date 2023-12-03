@@ -15,6 +15,9 @@ export function getWidgetDefaultOptions(widgetId: WidgetId) {
             isBold: false,
             isItalic: false,
         }
+        case "news": return {
+            countryCode: "us",
+        }
         default: return {}
     }
 }

@@ -1,6 +1,7 @@
 import ClockWidgetOptionsDialog from "@/view/widgets/ClockWidget/ClockWidgetOptionsDialog";
 import {useWidgetOptionsDialogWrapper} from "@/view/pages/AppPage/useWidgetOptionsDialogWrapper";
 import TextWidgetOptionsDialog from "@/view/widgets/TextWidget/TextWidgetOptionsDialog";
+import {NewsWidgetOptionsDialog} from "@/view/widgets/NewsWidget/NewsWidgetOptionsDialog";
 
 type Props = {
     openForPanelUid: string | null,
@@ -32,6 +33,14 @@ export default function WidgetOptionsDialogWrapper(props: Props) {
             }
             { openedPanel && openedPanel.data.widgetId == "text" &&
                 <TextWidgetOptionsDialog
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    options={openedPanel.data.options}
+                    setOption={setOption}
+                />
+            }
+            { openedPanel && openedPanel.data.widgetId == "news" &&
+                <NewsWidgetOptionsDialog
                     isOpen={isOpen}
                     onClose={onClose}
                     options={openedPanel.data.options}

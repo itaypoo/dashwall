@@ -39,11 +39,12 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
     transform-origin: top left;
     transition: 100ms;
-    height: fit-content;
     display: flex !important;
     flex-direction: column;
     z-index: 50;
-    overflow: hidden;
+    height: fit-content;
+    max-height: 300px;
+    overflow-y: auto;
 }
 .mp-select-dropdown[data-open="false"] {
     opacity: 0;

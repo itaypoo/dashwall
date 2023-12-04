@@ -7,6 +7,7 @@ export type TextWidgetOptions = {
     isBold: boolean
     isItalic: boolean
     backgroundColor: string
+    useGlobalTheme: boolean
 }
 
 export const TextWidget: WidgetComponent<TextWidgetOptions> = (props) => {
@@ -15,10 +16,19 @@ export const TextWidget: WidgetComponent<TextWidgetOptions> = (props) => {
     } = useTextWidget(props.options)
 
     return (
-        <div className={styles.bg} style={{backgroundColor: props.options.backgroundColor}}>
+        <div
+            className={styles.bg}
+            style={ props.options.useGlobalTheme ?
+                {backgroundColor: "var(--user-color-lighter)"}
+                : {backgroundColor: props.options.backgroundColor}
+            }
+        >
             <p
                 className={styles.text}
-                style={{color: textColor}}
+                style={ props.options.useGlobalTheme ?
+                    {color: "var(--user-color-darker)"}
+                    : {color: textColor}
+                }
                 data-bold={props.options.isBold}
                 data-italic={props.options.isItalic}
             >

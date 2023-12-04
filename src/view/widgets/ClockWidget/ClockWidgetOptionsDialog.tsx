@@ -1,8 +1,9 @@
 import {WidgetOptionsDialog} from "@/model/WidgetOptionsDialog";
 import OptionsDialog from "@/view/components/OptionsDialog/OptionsDialog";
 import {SelectOption} from "@/view/materialPoo/MpSelect";
+import {ClockWidgetOptions} from "@/view/widgets/ClockWidget/ClockWidget";
 
-const ClockWidgetOptionsDialog: WidgetOptionsDialog = (props) => {
+const ClockWidgetOptionsDialog: WidgetOptionsDialog<ClockWidgetOptions> = (props) => {
     const themeOptions = [
         {label: "Light", code: "light", icon: "light_mode"},
         {label: "Dark", code: "dark", icon: "dark_mode"},
@@ -16,14 +17,14 @@ const ClockWidgetOptionsDialog: WidgetOptionsDialog = (props) => {
         >
             <OptionsDialog.Switch
                 label="Use 24h format"
-                value={props.options.is24Hour as boolean}
+                value={props.options.is24Hour}
                 onChange={(value) => props.setOption('is24Hour', value)}
             />
             <OptionsDialog.Select
                 label="Theme"
-                selectedValue={themeOptions.find(option => option.code === props.options.theme) as SelectOption}
                 options={themeOptions}
-                onChange={(value) => props.setOption('theme', value.code)}
+                selectedValue={props.options.theme}
+                onChange={(value) => props.setOption('theme', value)}
             />
         </OptionsDialog>
     )

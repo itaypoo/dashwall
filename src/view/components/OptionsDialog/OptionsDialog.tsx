@@ -53,8 +53,8 @@ OptionsDialog.Switch = (props: SwitchProps) => {
 type SelectProps = {
     label: string
     options: SelectOption[]
-    selectedValue: SelectOption
-    onChange: (value: SelectOption) => void
+    selectedValue: string
+    onChange: (value: string) => void
 }
 OptionsDialog.Select = (props: SelectProps) => {
     return (
@@ -62,7 +62,7 @@ OptionsDialog.Select = (props: SelectProps) => {
             <MpText scale="body" noMargin>{props.label}</MpText>
             <MpSelect
                 options={props.options}
-                selectedOption={props.selectedValue}
+                selectedOptionCode={props.selectedValue}
                 onChange={props.onChange}
             />
         </div>

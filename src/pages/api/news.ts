@@ -1,15 +1,16 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import {NewsCountryCode} from "@/model/NewsCountryCode";
 import {ApiError, processApiCall} from "@/backend/processApiCall";
 import {db} from "@/backend/firebaseAdmin";
 import {firestore} from "firebase-admin";
 import Timestamp = firestore.Timestamp;
 import {NewsArticle} from "@/model/NewsArticle";
+import {newsCountryCodes} from "@/model/NewsCountryCode";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if(req.method != "GET") return res.status(405).json({message: "Method not allowed"})
-    const countryCode = req.query.countryCode as NewsCountryCode
+    const countryCode = req.query.countryCode as string
     if(!countryCode) return res.status(400).json({message: "Missing country code"})
+    if(!newsCountryCodes.includes(countryCode)) return res.status(400).json({message: "Invalid country code"})
 
     await processApiCall(res, async () => {
         const shouldFetch = await shouldFetchNewNews(countryCode)
@@ -29,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-async function shouldFetchNewNews(countryCode: NewsCountryCode) {
+async function shouldFetchNewNews(countryCode: string) {
     const existingNews = await db.collection("savedNews").doc(countryCode).get()
     if(!existingNews.exists) return true
     const lastUpdated = (existingNews.get("lastUpdated") as Timestamp).toDate()
@@ -40,7 +41,7 @@ async function shouldFetchNewNews(countryCode: NewsCountryCode) {
     return diffInHours > 12
 }
 
-async function fetchNews(countryCode: NewsCountryCode) {
+async function fetchNews(countryCode: string) {
     const apiKey = process.env.NEWS_API_KEY
     const res = await fetch(`https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${apiKey}`)
     if(!res.ok) throw new ApiError(500, `Failed to fetch news for country code ${countryCode}`)
@@ -62,7 +63,7 @@ function apiDataToNewsData(apiData: any): NewsArticle[] {
     return res
 }
 
-async function uploadSavedNews(countryCode: NewsCountryCode, news: NewsArticle[]) {
+async function uploadSavedNews(countryCode: string, news: NewsArticle[]) {
     const savedNewsRef = db.collection("savedNews").doc(countryCode)
     savedNewsRef.set({lastUpdated: new Date()})
 
@@ -81,7 +82,7 @@ async function uploadSavedNews(countryCode: NewsCountryCode, news: NewsArticle[]
     await batch2.commit()
 }
 
-async function getExistingNews(countryCode: NewsCountryCode) {
+async function getExistingNews(countryCode: string) {
     const savedNewsRef = db.collection("savedNews").doc(countryCode)
     const existingArticles = await savedNewsRef.collection("articles").get()
     const res: NewsArticle[] = []

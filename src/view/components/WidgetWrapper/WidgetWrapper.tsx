@@ -6,6 +6,7 @@ import WidgetMenu from "@/view/components/WidgetWrapper/WidgetMenu/WidgetMenu";
 import {WidgetId} from "@/model/WidgetId";
 import {GridPanel} from "@/model/GridPanel";
 import {NewsWidget, NewsWidgetOptions} from "@/view/widgets/NewsWidget/NewsWidget";
+import {FactsWidget} from "@/view/widgets/FactsWidget/FactsWidget";
 
 type Props = {
     panel: GridPanel
@@ -41,6 +42,12 @@ export default function WidgetWrapper(props: Props) {
             { widgetId === "news" &&
                 <NewsWidget
                     options={options as NewsWidgetOptions}
+                    panel={props.panel}
+                />
+            }
+            { widgetId == "facts" &&
+                <FactsWidget
+                    options={options as {}}
                     panel={props.panel}
                 />
             }

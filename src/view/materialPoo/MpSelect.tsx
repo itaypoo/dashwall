@@ -10,13 +10,15 @@ export type SelectOption = {
 
 type MpSelectProps = {
     options: SelectOption[];
-    selectedOption: SelectOption;
-    onChange: (option: SelectOption) => void;
+    selectedOptionCode: string;
+    onChange: (option: string) => void;
 };
 
 export default function MpSelect(props: MpSelectProps) {
     const [dropdownOpen, setDropdownOpen] = useState(false)
     const selectRef = useRef<HTMLDivElement>(null);
+
+    const selectedOption = props.options.find(option => option.code === props.selectedOptionCode)
 
     useEffect(() => {
         const clickOutside = (event: PointerEvent) => {
@@ -34,10 +36,10 @@ export default function MpSelect(props: MpSelectProps) {
             onClick={() => setDropdownOpen(!dropdownOpen)}
         >
             <div>
-                { props.selectedOption.icon &&
-                    <MpIcon icon={props.selectedOption.icon} />
+                { selectedOption?.icon &&
+                    <MpIcon icon={selectedOption.icon} />
                 }
-                <MpText scale="body" noMargin>{props.selectedOption.label}</MpText>
+                <MpText scale="body" noMargin>{selectedOption?.label}</MpText>
             </div>
             <MpIcon icon="arrow_drop_down"/>
 
@@ -50,7 +52,7 @@ export default function MpSelect(props: MpSelectProps) {
                     <div key={`mpselectoption${i}`}
                         className="mp-select-option"
                         onClick={() => {
-                            props.onChange(option)
+                            props.onChange(option.code)
                             setDropdownOpen(false)
                         }}
                     >

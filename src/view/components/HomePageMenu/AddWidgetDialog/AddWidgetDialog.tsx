@@ -26,6 +26,11 @@ const widgetOptions: {widgetId: WidgetId, name: string, icon: string}[] = [
         widgetId: "news",
         icon: "newsmode",
         name: "News Headlines"
+    },
+    {
+        widgetId: "facts",
+        icon: "lightbulb",
+        name: "Random Facts"
     }
 ]
 

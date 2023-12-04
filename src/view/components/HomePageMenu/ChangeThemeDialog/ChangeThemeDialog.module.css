@@ -1,0 +1,43 @@
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.switchWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dummyWidget {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+    box-sizing: border-box;
+    border-radius: var(--corner-card);
+    background-color: var(--user-color-lightest);
+}
+
+.dummyWidget > p:first-child {
+    background-color: var(--user-color-normal);
+    color: white;
+    padding: 8px 14px;
+    margin: 0;
+    border-radius: 100px;
+}
+
+.dummyWidget > p:last-child {
+    color: var(--user-color-darkest);
+    margin: 0;
+}

@@ -1,10 +1,10 @@
 import React from "react";
 
-type WidgetOptionsDialogProps = {
+type WidgetOptionsDialogProps<OptionsType> = {
     isOpen: boolean,
     onClose: () => void,
-    options: { [key: string]: any },
+    options: OptionsType,
     setOption: (option: string, value: any) => void,
 }
 
-export type WidgetOptionsDialog = React.FC<WidgetOptionsDialogProps>
+export type WidgetOptionsDialog<T> = React.FC<WidgetOptionsDialogProps<T>>

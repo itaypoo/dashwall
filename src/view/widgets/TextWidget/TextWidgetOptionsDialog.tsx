@@ -1,7 +1,8 @@
 import {WidgetOptionsDialog} from "@/model/WidgetOptionsDialog";
 import OptionsDialog from "@/view/components/OptionsDialog/OptionsDialog";
+import {TextWidgetOptions} from "@/view/widgets/TextWidget/TextWidget";
 
-const TextWidgetOptionsDialog: WidgetOptionsDialog = (props) => {
+const TextWidgetOptionsDialog: WidgetOptionsDialog<TextWidgetOptions> = (props) => {
 
     return (
         <OptionsDialog isOpen={props.isOpen} onClose={props.onClose}>
@@ -11,11 +12,18 @@ const TextWidgetOptionsDialog: WidgetOptionsDialog = (props) => {
                 value={props.options.text}
                 onChange={(value) => props.setOption("text", value)}
             />
-            <OptionsDialog.ColorPicker
-                label="Background color"
-                value={props.options.backgroundColor}
-                onChange={(value) => props.setOption("backgroundColor", value)}
+            <OptionsDialog.Switch
+                label="Use global theme"
+                value={props.options.useGlobalTheme}
+                onChange={(value) => props.setOption("useGlobalTheme", value)}
             />
+            { !props.options.useGlobalTheme &&
+                <OptionsDialog.ColorPicker
+                    label="Background color"
+                    value={props.options.backgroundColor}
+                    onChange={(value) => props.setOption("backgroundColor", value)}
+                />
+            }
             <OptionsDialog.Switch
                 label="Bold"
                 value={props.options.isBold}

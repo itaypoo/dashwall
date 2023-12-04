@@ -6,6 +6,7 @@ export const useHomePageMenu = () => {
     const [menuShown, setMenuShown] = useState(false)
     const [isAddWidgetDialogShown, setIsAddWidgetDialogShown] = useState(false)
     const [isClearWidgetsDialogShown, setIsClearWidgetsDialogShown] = useState(false)
+    const [isChangeThemeDialogOpen, setIsChangeThemeDialogOpen] = useState(false)
 
     const {
         setIsEditMode,
@@ -30,6 +31,9 @@ export const useHomePageMenu = () => {
         else if(id == "clear-widgets") {
             setIsClearWidgetsDialogShown(true)
         }
+        else if(id == "change-theme") {
+            setIsChangeThemeDialogOpen(true)
+        }
     }
 
     const clearWidgets = () => {
@@ -46,5 +50,7 @@ export const useHomePageMenu = () => {
         isClearWidgetsDialogShown,
         setIsClearWidgetsDialogShown,
         clearWidgets,
+        isChangeThemeDialogOpen,
+        setIsChangeThemeDialogOpen,
     }
 }

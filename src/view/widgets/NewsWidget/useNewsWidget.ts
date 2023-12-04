@@ -26,7 +26,7 @@ export const useNewsWidget = (
         const millisInHour = 3600 * 1000
         const i = setInterval(fetchNews, millisInHour*6)
         return () => clearInterval(i)
-    }, [])
+    }, [options.countryCode])
 
     useEffect(() => {
         setArticleWidth((panel.width * cellSize) - (cellMargin * 2) - 28 - 28)
@@ -53,9 +53,23 @@ export const useNewsWidget = (
         const res = await fetch(`/api/news?countryCode=${options.countryCode}`)
         if(res.ok) {
             const data = await res.json()
-            setArticles(data.articles)
+            const articles = data.articles as NewsArticle[]
+            setArticles(removeRepeatedSource(articles))
         }
         else console.error(res)
+    }
+
+    const removeRepeatedSource = (articles: NewsArticle[]) => {
+        return articles.map(article => {
+            if (article.title.endsWith(` - ${article.source}`) || article.title.endsWith(` - ${article.source.toUpperCase()}`)) {
+                return {
+                    ...article,
+                    title: article.title.substring(0, article.title.length - article.source.length - 3) // '- ' and the source length
+                };
+            } else {
+                return article;
+            }
+        });
     }
 
     const getArticleDateString = (article: NewsArticle) => {
